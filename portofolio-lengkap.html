@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id" class="">
+
+<head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRAFTIVE - Portofolio Lengkap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    transitionProperty: {
+                        'all': 'all',
+                    },
+                    colors: {
+                        'primary-yellow': '#FACC15',
+                        'secondary-cyan': '#22D3EE',
+                        'tertiary-green': '#4ADE80',
+                    }
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .hamburger-line {
+            display: block;
+            width: 24px;
+            height: 3px;
+            margin: 4px auto;
+            -webkit-transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            background-color: #000;
+        }
+
+        .dark .hamburger-line {
+            background-color: #fff;
+        }
+
+        .hamburger.open .hamburger-line:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.open .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open .hamburger-line:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+    </style>
+</head>
+
+<body class="transition-all duration-500 bg-white text-black dark:bg-slate-900 dark:text-white">
+    <header class="flex justify-between items-center px-6 py-4 bg-gray-100 dark:bg-slate-950 text-black dark:text-white shadow-lg transition-all duration-500 sticky top-0 z-50">
+        <h1 class="text-3xl font-bold text-primary-yellow">CRAFTIVE</h1>
+        <nav class="hidden md:flex space-x-6 text-lg font-medium">
+            <a href="index.html#layanan" class="hover:text-primary-yellow transition duration-300 py-1">Layanan</a>
+            <a href="index.html#portofolio" class="hover:text-primary-yellow transition duration-300 py-1">Portofolio</a>
+            <a href="index.html#alasan" class="hover:text-primary-yellow transition duration-300 py-1">Mengapa Kami</a>
+            <a href="index.html#harga" class="hover:text-primary-yellow transition duration-300 py-1">Harga</a>
+            <a href="index.html#testimoni" class="hover:text-primary-yellow transition duration-300 py-1">Testimoni</a>
+            <a href="index.html#faq" class="hover:text-primary-yellow transition duration-300 py-1">FAQ</a>
+            <a href="index.html#kontak" class="hover:text-primary-yellow transition duration-300 py-1">Kontak</a>
+            <button onclick="toggleMode()" class="ml-4 px-4 py-2 bg-primary-yellow text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md">🌓 Mode</button>
+        </nav>
+
+        <div class="md:hidden flex items-center">
+            <button onclick="toggleMode()" class="px-3 py-1 bg-primary-yellow text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md mr-4">🌓</button>
+            <button id="hamburger" name="hamburger-menu" aria-label="Toggle Navigation Menu" class="hamburger focus:outline-none">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-100 dark:bg-slate-950 z-40 hidden flex-col items-center justify-center space-y-8 text-xl transition-all duration-500 md:hidden">
+        <a href="index.html#layanan" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Layanan</a>
+        <a href="index.html#portofolio" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Portofolio</a>
+        <a href="index.html#alasan" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Mengapa Kami</a>
+        <a href="index.html#harga" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Harga</a>
+        <a href="index.html#testimoni" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Testimoni</a>
+        <a href="index.html#faq" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">FAQ</a>
+        <a href="index.html#kontak" class="hover:text-primary-yellow transition duration-300" onclick="closeMobileMenu()">Kontak</a>
+    </div>
+
+    <main class="py-16 px-6 max-w-7xl mx-auto transition-all duration-500">
+        <a href="index.html#portofolio" class="inline-flex items-center text-primary-yellow hover:underline mb-8">
+            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            Kembali
+        </a>
+
+        <h2 class="text-4xl md:text-5xl font-extrabold text-center text-gray-800 dark:text-white mb-12" data-aos="fade-up">Galeri Project</h2>
+        <p class="text-center text-lg text-gray-700 dark:text-gray-300 mb-12" data-aos="fade-up" data-aos-delay="100"></p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="asset/techhcomp.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Tech Comp" onclick="openModal(this.src, 'Desain UI/UX Modern untuk Aplikasi Manajemen Proyek Tech Comp. Fokus pada kemudahan navigasi dan visual yang bersih.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-primary-yellow">Aplikasi Manajemen Proyek</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Mobile & Web</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Klien: Tech Innovate | Tahun: 2024</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="asset/cafe.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Pemesanan Cafe" onclick="openModal(this.src, 'Antarmuka aplikasi pemesanan untuk kedai kopi modern, menonjolkan visual makanan dan minuman yang menarik.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-primary-yellow">Aplikasi Pemesanan Cafe</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Mobile</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Klien: Kopi Senja | Tahun: 2023</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="asset/sepatu.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX E-commerce Sepatu" onclick="openModal(this.src, 'Desain website e-commerce yang berfokus pada pengalaman berbelanja sepatu yang mulus dan visual produk yang memikat.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-primary-yellow">Website E-commerce Sepatu</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Web</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Klien: SneakerHeads | Tahun: 2024</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="/asset/semafut.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain Logo Brand Fashion" onclick="openModal(this.src, 'Desain kreatif logo tim Football asal Yogyakarta.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-yellow-400">Desain Logo Tim Football
+                    </h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain Grafis</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Klien : SEMAFUT FC | Tahun: 2021</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="asset/fahion.jpg" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Website Profil Perusahaan Konstruksi" onclick="openModal(this.src, 'Pembuatan website profil perusahaan yang informatif dan profesional, menampilkan proyek dan layanan utama.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-primary-yellow">UI/UX E-commerce Fashion</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Klien: Ltf Shop | Tahun: 2023</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="asset/thinked.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain Aplikasi Edukasi Mobile" onclick="openModal(this.src, 'Pengembangan aplikasi edukasi interaktif untuk anak-anak, dengan desain yang ceria dan fitur gamifikasi.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-primary-yellow">Website Pembelajaran </h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Website</p>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Klien: ThinkEd | Tahun: 2025</p>
+                </div>
+    </main>
+
+    <div id="imageModal" class="fixed inset-0 z-50 bg-black bg-opacity-90 hidden flex-col items-center justify-center p-4">
+        <span class="absolute top-4 right-6 text-white text-5xl cursor-pointer hover:text-primary-yellow transition" onclick="closeModal()">&times;</span>
+        <img id="modalImg" class="max-w-[90%] max-h-[70vh] rounded-lg shadow-2xl object-contain mb-4" src="" alt="Preview Gambar Portofolio">
+        <p id="modalCaption" class="text-white text-lg text-center max-w-2xl"></p>
+    </div>
+
+    <footer class="text-center py-8 bg-gray-100 dark:bg-slate-950 text-black dark:text-white transition-all duration-500">
+        <div class="flex justify-center gap-8 mb-6">
+            <a href="https://instagram.com/bimaahdrn_" target="_blank" aria-label="Kunjungi Instagram CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
+                <img src="asset/instagram.png" alt="Instagram Logo" class="h-8 w-8">
+                <span class="text-sm">Instagram</span>
+            </a>
+            <a href="https://wa.me/6285799745728" target="_blank" aria-label="Hubungi CRAFTIVE via WhatsApp" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
+                <img src="asset/whatsapp.png" alt="WhatsApp Logo" class="h-8 w-8">
+                <span class="text-sm">WhatsApp</span>
+            </a>
+            <a href="mailto:bimahandriano28@students.amikom.ac.id" aria-label="Kirim Email ke CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-primary-yellow transition duration-300">
+                <img src="asset/gmail.png" alt="Gmail Logo" class="h-8 w-8">
+                <span class="text-sm">Email</span>
+            </a>
+        </div>
+
+        <a href="https://wa.me/6285799745728" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center gap-2 text-lg font-semibold z-40">
+            <img src="asset/whatsapp.png" alt="WhatsApp Icon" class="h-6 w-6">
+            Chat via WhatsApp
+        </a>
+
+        <p class="text-gray-600 dark:text-gray-400 mt-4">&copy; 2025 CRAFTIVE. Semua hak dilindungi undang-undang.</p>
+    </footer>
+
+    <script>
+        // Common functions for dark mode and mobile menu
+        function toggleMode() {
+            document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('open');
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                document.body.style.overflow = mobileMenu.classList.contains('flex') ? 'hidden' : 'auto';
+            });
+        });
+
+        function closeMobileMenu() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            hamburger.classList.remove('open');
+            mobileMenu.classList.add('hidden');
+            mobileMenu.classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Functions for modal gallery (copy-pasted from index.html)
+        function openModal(src, caption) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('modalCaption').innerText = caption;
+            document.getElementById('imageModal').classList.remove('hidden');
+            document.getElementById('imageModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.getElementById('imageModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>

@@ -1,100 +1,247 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRATIVE - Jasa Desain UX/UI</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PORTOFOLIO - BIMA HANDRIANO PUTRA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    transitionProperty: {
+                        'all': 'all',
+                    },
+                    colors: {
+                        'primary-yellow': '#FACC15',
+                        'secondary-cyan': '#22D3EE',
+                        'tertiary-green': '#4ADE80',
+                    }
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Theme Initialization Script - Harus dijalankan sebelum body load -->
+    <script>
+        // Initialize theme immediately to prevent flash
+        (function() {
+            const savedTheme = localStorage.getItem('craftive-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+            
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+            
+            // Save theme if not already saved
+            if (!savedTheme) {
+                localStorage.setItem('craftive-theme', theme);
+            }
+        })();
+    </script>
 </head>
-<body class="bg-gradient-to-b from-cyan-900 to-sky-300 text-white font-sans">
-    <!-- Header -->
-    <header class="bg-black p-4 flex justify-between items-center">
-        <div class="text-xl font-bold text-blue-400">CRATIVE</div>
-        <nav class="space-x-4">
-            <a href="#" class="hover:text-blue-400">Beranda</a>
-            <a href="#" class="hover:text-blue-400">Layanan</a>
-            <a href="#" class="hover:text-blue-400">Portofolio</a>
-            <a href="#" class="hover:text-blue-400">Hubungi Kami</a>
+<body class="transition-all duration-500 bg-white text-black dark:bg-slate-900 dark:text-white">
+    <header class="flex justify-between items-center px-6 py-4 bg-gray-100 dark:bg-slate-950 text-black dark:text-white shadow-lg transition-all duration-500 sticky top-0 z-50">
+        <h1 class="text-3xl font-bold text-yellow-400">BIMA HANDRIANO PUTRA</h1>
+        <nav class="hidden md:flex space-x-6 text-lg font-medium">
+            <a href="#skill" class="hover:text-yellow-400 transition duration-300 py-1">Skill</a>
+            <a href="#portofolio" class="hover:text-yellow-400 transition duration-300 py-1">Portofolio</a>
+            <a href="#kontak" class="hover:text-yellow-400 transition duration-300 py-1">Kontak</a>
+            <button id="theme-toggle" class="ml-4 px-4 py-2 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md">
+                <span id="theme-icon">🌓</span> Mode
+            </button>
         </nav>
+        <div class="md:hidden flex items-center">
+            <button id="theme-toggle-mobile" class="px-3 py-1 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-300 transition duration-300 shadow-md mr-4">
+                <span id="theme-icon-mobile">🌓</span>
+            </button>
+            <button id="hamburger" name="hamburger-menu" aria-label="Toggle Navigation Menu" class="hamburger focus:outline-none">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
     </header>
 
+    <div id="mobile-menu" class="fixed inset-0 bg-gray-100 dark:bg-slate-950 z-40 hidden flex-col items-center justify-center space-y-8 text-xl transition-all duration-500 md:hidden">
+        <a href="#layanan" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">skill</a>
+        <a href="#portofolio" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Portofolio</a>
+        <a href="#kontak" class="hover:text-yellow-400 transition duration-300" onclick="closeMobileMenu()">Kontak</a>
+    </div>
+
     <!-- Hero Section -->
-    <section class="text-center py-12 px-4">
-        <h1 class="text-4xl font-bold text-white mb-4">JASA <span class="text-yellow-300">DESAIN UI/UX</span> MURAH BERKUALITAS</h1>
-        <p class="mb-6 max-w-xl mx-auto">Jasa UI/UX murah dan berkualitas untuk kebutuhan personal, bisnis, startup, dan perusahaan. Kami siap membuatkan desain digital impian Anda.</p>
-        <div class="space-x-4">
-            <button class="bg-yellow-300 text-black px-4 py-2 rounded">Cek Layanan</button>
-            <button class="bg-green-400 text-black px-4 py-2 rounded">Desain Gratis</button>
-            <button class="bg-blue-500 text-black px-4 py-2 rounded">Diskusi Cepat</button>
-        </div>
-        <div class="mt-8 flex justify-center space-x-10 text-lg">
-            <div>
-                <p class="text-yellow-300 font-bold text-2xl">358</p>
-                <p>Our Customer</p>
-            </div>
-            <div>
-                <p class="text-yellow-300 font-bold text-2xl">386</p>
-                <p>Project Completed</p>
-            </div>
+    <section class="text-center py-20 px-4 max-w-4xl mx-auto transition-all duration-500 mt-20" data-aos="fade-up">
+    <div class="flex justify-center mb-8">
+    <img src="asset/bima.jpg" 
+         alt="Foto Profil Bima Handriano Putra" 
+         class="w-40 h-40 rounded-full object-cover shadow-xl border-4 border-yellow-400">
+</div>
+        <h2 class="text-5xl font-extrabold text-yellow-400 leading-tight mb-4">BIMA HANDRIANO PUTRA</h2>
+        <p class="mt-4 text-xl leading-relaxed text-gray-700 dark:text-gray-300">Seorang pengembang dan desainer web yang bersemangat dan berbakat dalam menciptakan pengalaman digital yang menarik dan ramah pengguna. Dengan latar belakang di bidang desain dan pengembangan, saya menghadirkan perspektif unik dalam setiap proyek yang saya kerjakan.</p>
+        <div class="flex flex-wrap justify-center gap-5 mt-8">
+            <button class="bg-yellow-400 text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-yellow-300 shadow-xl">Desain UI/UX</button>
+            <button class="bg-cyan-400 text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-cyan-300 shadow-xl">Desain Grafis</button>
+            <button class="bg-green-400 text-black px-6 py-3 rounded-full font-bold text-lg transition duration-300 hover:scale-105 hover:bg-green-300 shadow-xl">Pembuatan Website</button>
         </div>
     </section>
 
-    <!-- Layanan Section -->
-    <section class="py-12 px-4 bg-cyan-800">
-        <h2 class="text-center text-2xl font-bold mb-8">Layanan CRATIVE</h2>
-        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div class="bg-white text-black p-4 rounded-lg shadow">Desain UI/UX - Tampilan Aplikasi Sesuai Kebutuhan Anda</div>
-            <div class="bg-white text-black p-4 rounded-lg shadow">Desain Grafis - Konten Visual Promosi dan Branding</div>
-            <div class="bg-white text-black p-4 rounded-lg shadow">Pembuatan Website - Website Profesional Siap Pakai</div>
-        </div>
-    </section>
-
-    <!-- Benefit Section -->
-    <section class="py-12 px-4">
-        <h2 class="text-center text-2xl font-bold mb-8">Benefit CRATIVE</h2>
-        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <div class="bg-white text-black p-4 rounded-lg shadow">Gratis Konsultasi - Diskusikan kebutuhan desain Anda secara gratis</div>
-            <div class="bg-white text-black p-4 rounded-lg shadow">Harga Bersahabat - Dapatkan harga terbaik sesuai dengan kebutuhan Anda</div>
-            <div class="bg-white text-black p-4 rounded-lg shadow">Experience - Tim profesional dan berpengalaman di bidangnya</div>
-        </div>
-    </section>
-
-    <!-- Harga Section -->
-    <section class="py-12 px-4 bg-cyan-800">
-        <h2 class="text-center text-2xl font-bold mb-8">Harga Jasa CRATIVE</h2>
-        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto text-black">
-            <div class="bg-white p-6 rounded-lg shadow text-center">
-                <h3 class="font-bold text-xl mb-2">Pembuatan Website</h3>
-                <p class="mb-4">Mulai dari 200rb</p>
-                <button class="bg-yellow-300 px-4 py-2 rounded">Pesan Sekarang</button>
+    <!-- Section Skill -->
+    <section id="skill" class="py-16 bg-gradient-to-br from-slate-100 to-slate-300 dark:from-slate-700 dark:to-slate-900 text-gray-900 dark:text-white transition-all duration-500" data-aos="fade-up">
+        <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">My Skills</h3>
+        <div class="grid md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-yellow-400">
+                <h4 class="text-2xl font-bold text-yellow-400 mb-3">Desain UI/UX</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Wireframing, Prototyping, User Research, Design Systems.</p>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow text-center">
-                <h3 class="font-bold text-xl mb-2">Desain UI/UX</h3>
-                <p class="mb-4">Mulai dari 100rb</p>
-                <button class="bg-yellow-300 px-4 py-2 rounded">Pesan Sekarang</button>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-cyan-400">
+                <h4 class="text-2xl font-bold text-cyan-400 mb-3">Web Development</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">HTML, CSS, JavaScript, React, Laravel, Responsive & Performance Optimization.</p>
             </div>
-            <div class="bg-white p-6 rounded-lg shadow text-center">
-                <h3 class="font-bold text-xl mb-2">Desain Grafis</h3>
-                <p class="mb-4">Mulai dari 50rb</p>
-                <button class="bg-yellow-300 px-4 py-2 rounded">Pesan Sekarang</button>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-green-400">
+                <h4 class="text-2xl font-bold text-green-400 mb-3">Aplikasi Mobile</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">React Native, Flutter, Progressive Web Apps.</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-red-400">
+                <h4 class="text-2xl font-bold text-red-400 mb-3">Frontend Developer</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">React / Vue, Tailwind CSS, Accessibility, Component-driven UI</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-purple-400">
+                <h4 class="text-2xl font-bold text-purple-400 mb-3">Backend Developer</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">API Design, PHP / Node.js, Database Modeling, Authentication</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900 p-8 rounded-[2rem] shadow-lg hover:scale-105 transition duration-300 border-t-4 border-orange-400">
+                <h4 class="text-2xl font-bold text-orange-400 mb-3">Ilustrator</h4>
+                <p class="mt-2 text-base text-gray-700 dark:text-gray-300">Vector Illustration, Character Art, Concept Sketching, Asset Creation</p>
             </div>
         </div>
     </section>
 
-    <!-- Portofolio Section -->
-    <section class="py-12 px-4">
-        <h2 class="text-center text-2xl font-bold mb-8">Portofolio</h2>
-        <div class="flex justify-center space-x-4">
-            <img src="https://via.placeholder.com/100x200" alt="Portofolio 1" class="rounded-lg shadow">
-            <img src="https://via.placeholder.com/100x200" alt="Portofolio 2" class="rounded-lg shadow">
-            <img src="https://via.placeholder.com/100x200" alt="Portofolio 3" class="rounded-lg shadow">
-            <img src="https://via.placeholder.com/100x200" alt="Portofolio 4" class="rounded-lg shadow">
+    <!-- Portofolio -->
+    <section id="portofolio" class="py-16 px-6 transition-all duration-500" data-aos="fade-up">
+        <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Karya Terbaik</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="asset/techhcomp.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Tech Comp" onclick="openModal(this.src, 'Desain UI/UX Modern untuk Aplikasi Manajemen Proyek Tech Comp. Fokus pada kemudahan navigasi dan visual yang bersih.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-yellow-400">Aplikasi E-commerce</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Mobile & Web</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="/asset/cafe.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX Aplikasi Pemesanan Cafe" onclick="openModal(this.src, 'Antarmuka aplikasi pemesanan untuk kedai kopi modern, menonjolkan visual makanan dan minuman yang menarik.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-yellow-400">Aplikasi Pemesanan Cafe</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Mobile</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="/asset/sepatu.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain UI/UX E-commerce Sepatu" onclick="openModal(this.src, 'Desain website e-commerce yang berfokus pada pengalaman berbelanja sepatu yang mulus dan visual produk yang memikat.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-yellow-400">Website E-commerce Sepatu</h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain UI/UX Web</p>
+                </div>
+            </div>
+            <div class="bg-white dark:bg-slate-700 rounded-lg shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                <img src="/asset/semafut.png" loading="lazy" class="w-full h-48 object-cover cursor-pointer" alt="Desain Logo Brand Fashion" onclick="openModal(this.src, 'Desain kreatif logo tim Football asal Yogyakarta.')">
+                <div class="p-4">
+                    <h4 class="font-bold text-lg text-yellow-400">Desain Logo Tim Football
+                    </h4>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">Desain Grafis</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-12">
+            <a href="portofolio-lengkap.html" class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition duration-300 shadow-xl btn-pulse">Lihat Lebih Banyak Portofolio</a>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-black py-6 text-center text-gray-400">
-        <p>© 2025 CRATIVE. All rights reserved.</p>
+    <div id="imageModal" class="fixed inset-0 z-50 bg-black bg-opacity-90 hidden flex-col items-center justify-center p-4">
+        <span class="absolute top-4 right-6 text-white text-5xl cursor-pointer hover:text-yellow-400 transition" onclick="closeModal()">&times;</span>
+        <img id="modalImg" class="max-w-[90%] max-h-[70vh] rounded-lg shadow-2xl object-contain mb-4" src="/placeholder.svg" alt="Preview Gambar Portofolio">
+        <p id="modalCaption" class="text-white text-lg text-center max-w-2xl"></p>
+    </div>
+
+    <section id="kontak" class="py-16 px-6 bg-gray-100 dark:bg-slate-800 transition-all duration-500" data-aos="fade-up">
+        <h3 class="text-4xl text-center font-bold mb-12 text-gray-800 dark:text-white">Kontak</h3>
+        <div class="max-w-3xl mx-auto bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg">
+            <p class="text-center text-lg mb-8 text-gray-700 dark:text-gray-300">Tertarik untuk memulai proyek desain impian Anda? Jangan ragu untuk menghubungi melalui form di bawah ini atau melalui kontak langsung.</p>
+            <form action="#" method="POST" class="space-y-6">
+                <div>
+                    <label for="nama" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Nama Lengkap</label>
+                    <input type="text" id="nama" name="nama" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" placeholder="Masukkan nama lengkap Anda" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Email</label>
+                    <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" placeholder="contoh@email.com" required>
+                </div>
+                <div>
+                    <label for="layanan-minat" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Layanan yang Diminati</label>
+                    <select id="layanan-minat" name="layanan-minat" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" required>
+                        <option value="">Pilih Layanan</option>
+                        <option value="ui_ux">Desain UI/UX</option>
+                        <option value="grafis">Desain Grafis</option>
+                        <option value="website">Pembuatan Website</option>
+                        <option value="lainnya">Lainnya</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="pesan" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">Pesan Anda</label>
+                    <textarea id="pesan" name="pesan" rows="5" class="mt-1 block w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:ring-yellow-400 focus:border-yellow-400 dark:bg-slate-800 dark:text-white" placeholder="Ceritakan kebutuhan desain Anda..." required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="bg-yellow-400 text-black px-8 py-3 rounded-full font-bold text-lg hover:bg-yellow-300 transition duration-300 shadow-xl btn-pulse">Kirim Pesan</button>
+                </div>
+            </form>
+            <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-8">Atau hubungi kami langsung:</p>
+            <div class="flex justify-center gap-6 mt-4">
+                <a href="https://wa.me/6285799745728" target="_blank" class="flex items-center gap-2 text-green-500 hover:text-green-600 transition duration-300 text-lg font-semibold">
+                    <img src="/asset/Whatsapp.png" alt="WhatsApp Icon" class="h-7 w-7">
+                    WhatsApp
+                </a>
+                <a href="mailto:info@craftive.com" class="flex items-center gap-2 text-red-500 hover:text-red-600 transition duration-300 text-lg font-semibold">
+                    <img src="/asset/gmail.png" alt="Gmail Icon" class="h-7 w-7">
+                    Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-8 bg-gray-100 dark:bg-slate-950 text-black dark:text-white transition-all duration-500">
+        <div class="flex justify-center gap-8 mb-6">
+            <a href="https://instagram.com/craftive_official" target="_blank" aria-label="Kunjungi Instagram CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-yellow-400 transition duration-300">
+                <img src="/asset/instagram.png" alt="Instagram Logo" class="h-8 w-8">
+                <span class="text-sm">Instagram</span>
+            </a>
+            <a href="https://wa.me/6285799745728" target="_blank" aria-label="Hubungi CRAFTIVE via WhatsApp" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-yellow-400 transition duration-300">
+                <img src="/asset/Whatsapp.png" alt="WhatsApp Logo" class="h-8 w-8">
+                <span class="text-sm">WhatsApp</span>
+            </a>
+            <a href="mailto:info@craftive.com" aria-label="Kirim Email ke CRAFTIVE" class="flex flex-col items-center gap-2 text-gray-600 dark:text-gray-300 hover:text-yellow-400 transition duration-300">
+                <img src="/asset/gmail.png" alt="Gmail Logo" class="h-8 w-8">
+                <span class="text-sm">Email</span>
+            </a>
+        </div>
+        <a href="https://wa.me/6285799745728" target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition duration-300 flex items-center gap-2 text-lg font-semibold z-40">
+            <img src="/asset/Whatsapp.png" alt="WhatsApp Icon" class="h-6 w-6">
+            Chat via WhatsApp
+        </a>
+        <p class="text-gray-600 dark:text-gray-400 mt-4">&copy; 2025 BIMA HANDRIANO PUTRA.</p>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
+    <script src="script.js"></script>
 </body>
 </html>
